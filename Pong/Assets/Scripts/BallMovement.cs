@@ -13,21 +13,21 @@ public class BallMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(this.StartBall());
+        StartCoroutine(StartBall());
     }
 
     //Setting moving direction by spawn place of the ball
     public IEnumerator StartBall(bool isStartingPlayer1 = true)
     {
-        this.hitCounter = 0;
+        hitCounter = 0;
         yield return new WaitForSeconds(2);
         if(isStartingPlayer1 )
         {
-            this.MoveBall(new Vector2(-1, 0));
+            MoveBall(new Vector2(-1, 0));
         }
         else
         {
-            this.MoveBall(new Vector2(1, 0));
+            MoveBall(new Vector2(1, 0));
         }
     }
 
@@ -38,10 +38,10 @@ public class BallMovement : MonoBehaviour
         dir=dir.normalized;
 
         //Calculating Speed
-        float speed = this.movementSpeed + this.hitCounter * this.extraSpeedPerHit;
+        float speed = movementSpeed + hitCounter * extraSpeedPerHit;
 
         //Access to rigidbody
-        Rigidbody2D rigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
 
         //Moving ball
         rigidbody2D.velocity = dir * speed;
@@ -49,9 +49,9 @@ public class BallMovement : MonoBehaviour
 
     public void IncreaseHitCounter()
     {
-        if(this.hitCounter * this.extraSpeedPerHit <= this.maxExtraSpeed)
+        if(hitCounter * extraSpeedPerHit <= maxExtraSpeed)
         {
-            this.hitCounter++;
+            hitCounter++;
         }
     }
 
