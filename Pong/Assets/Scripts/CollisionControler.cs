@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollisionControler : MonoBehaviour
 {
     public BallMovement ballMovement;
+    public ChangeColor changeColor;
 
     void BounceFromRacket(Collision2D c)
     {
@@ -17,10 +18,12 @@ public class CollisionControler : MonoBehaviour
         if(c.gameObject.name == "PaddlePlayer1")
         {
             x = 1;
+            changeColor.ChangeColorToSecondColor();
         }
         else
         {
             x = -1;
+            changeColor.ChangeColorToFirstColor();
         }
 
         float y = (ballPosition.y - racketPosition.y) / paddleHight;
@@ -37,13 +40,13 @@ public class CollisionControler : MonoBehaviour
         {
             BounceFromRacket(collision);
         }
-        else if(collision.gameObject.name == "WallLeft")
+        else if(collision.gameObject.name == "LeftWall")
         {
-            print("Collision with WallLeft");
+            print("Collision with LeftWall");
         }
-        else if (collision.gameObject.name == "WallRight")
+        else if (collision.gameObject.name == "RightWall")
         {
-            print("Collision with WallRight");
+            print("Collision with RightWall");
         }
    
     }
