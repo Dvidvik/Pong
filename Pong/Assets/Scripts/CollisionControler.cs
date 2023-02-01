@@ -6,6 +6,7 @@ public class CollisionControler : MonoBehaviour
 {
     public BallMovement ballMovement;
     public ChangeColor changeColor;
+    public Points points;
 
     void BounceFromRacket(Collision2D c)
     {
@@ -42,11 +43,11 @@ public class CollisionControler : MonoBehaviour
         }
         else if(collision.gameObject.name == "LeftWall")
         {
-            print("Collision with LeftWall");
+            points.IncreasePointsPlayer2();
         }
         else if (collision.gameObject.name == "RightWall")
-        {
-            print("Collision with RightWall");
+        {  
+            points.IncreasePointsPlayer1();
         }
    
     }
