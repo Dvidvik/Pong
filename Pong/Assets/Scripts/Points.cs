@@ -14,6 +14,7 @@ public class Points : MonoBehaviour
 
     int scorePlayer1 = 0;
     int scorePlayer2 = 0;
+    int winner;
 
 
     private void FixedUpdate()
@@ -34,6 +35,7 @@ public class Points : MonoBehaviour
         if(scorePlayer1 == pointsToWin)
         {
             scorePlayer1 = 0;
+            winner = 1;
             MoveToGameOver();
         }
     }
@@ -50,6 +52,7 @@ public class Points : MonoBehaviour
         if (scorePlayer2 == pointsToWin)
         {
             scorePlayer2 = 0;
+            winner = 2;
             MoveToGameOver();
         }
     }
@@ -58,7 +61,14 @@ public class Points : MonoBehaviour
 
     public void MoveToGameOver()
     {
-        //SceneManager.LoadScene("GameOver");
+        if(winner == 1)
+        {
+            SceneManager.LoadScene("GameOver1");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver2");
+        }
     }
 
 

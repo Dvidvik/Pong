@@ -44,12 +44,14 @@ public class CollisionControler : MonoBehaviour
         else if(collision.gameObject.name == "LeftWall")
         {
             points.IncreasePointsPlayer2();
+            StartCoroutine(ballMovement.StartBall(true));
         }
         else if (collision.gameObject.name == "RightWall")
         {  
             points.IncreasePointsPlayer1();
+            StartCoroutine(ballMovement.StartBall(false));
         }
-   
+
     }
 
 

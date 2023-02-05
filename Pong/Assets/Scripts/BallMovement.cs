@@ -16,9 +16,27 @@ public class BallMovement : MonoBehaviour
         StartCoroutine(StartBall());
     }
 
+    void PositionBall(bool isStartingPlayer1)
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
+        if(isStartingPlayer1)
+        {
+            gameObject.transform.localPosition= new Vector3(-150,0,10); 
+        }
+        else
+        {
+            gameObject.transform.localPosition = new Vector3(150, 0, 10);
+        }
+    }
+
+
+
     //Setting moving direction by spawn place of the ball
     public IEnumerator StartBall(bool isStartingPlayer1 = true)
     {
+        PositionBall(isStartingPlayer1);
+
         hitCounter = 0;
         yield return new WaitForSeconds(2);
         if(isStartingPlayer1 )
